@@ -1,7 +1,18 @@
 #cinema{
-    width: 20em;
+    width: 33em;
+	margin-right: 0;
+	padding: auto;
 }
+#searchButton {
+	width: 14em;
+	margin-left: 0;
+	padding: auto;
+}
+ #date {
+	width: 14em;
+    padding: auto;
 
+}
 .block{
     display: grid;
     grid-template-rows: 30% 40% 15% 15%;
@@ -25,14 +36,14 @@ img{
 
 }
 #select {
-    font-size: 2rem;
-    padding: 20px;
+    font-size: 1.5rem;
+    padding: 25px;
     border: 1px solid black;
     display: flex;
     flex-wrap: wrap;
-    justify-items: center;
     margin-left: 0;
-    justify-content: space-around;
+	align-items: center;
+    justify-content: space-between;
     width:80%;
     border-radius: 20px;
     background-color: yellow;
@@ -63,6 +74,7 @@ img {
     flex-direction: column;
     justify-content: center;
     padding: 10px;
+	vertical-align: middle;
     
 }
 body{
