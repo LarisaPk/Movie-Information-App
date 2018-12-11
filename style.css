@@ -24,7 +24,7 @@ img{
     flex-wrap: wrap;
 
 }
-#select {
+#select, #search {
     font-size: 2rem;
     padding: 20px;
     border: 1px solid black;
@@ -36,6 +36,7 @@ img{
     width:80%;
     border-radius: 20px;
     background-color: yellow;
+	margin-bottom: 10px;
 }
 
 h1, h2 {

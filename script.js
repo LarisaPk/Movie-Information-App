@@ -58,7 +58,7 @@ var requestId;//variable for the id of the theatre needed for the request url
            var d = new Date();//creates variable and assigns it to the current date
            var strDate = d.getDate() + "." + (d.getMonth()+1) + "." + d.getFullYear();//from the current date gets date, month, year in that orded put them in the string for fruther use
            
-           $( "#select" ).after( "<h1>Ongoing movies in "+$("#cinema").val()+" "+strDate+"</h1>" ); //creates new element <h1> with text about choosen cimnema
+           $( "#search" ).after( "<h1>Ongoing movies in "+$("#cinema").val()+" "+strDate+"</h1>" ); //creates new element <h1> with text about choosen cimnema
            $( "h1" ).hide();  //hides h1 element
            $( "h1" ).fadeIn('slow');  //animates the opacity of the matched elements
            var schedule = xmlhttp2.responseXML;//creates variable with value of responseXML
