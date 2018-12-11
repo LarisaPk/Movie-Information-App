@@ -5,7 +5,7 @@ var id = [];// creates array for idis
 var theatres =[]; //creates array of theatres
 var index;//creates variable for the id index
 var requestId;//variable for the id of the theatre needed for the request url 
-
+var strDate;
 
     function loadXML() {//function that fires when window loaded
     xmlhttp = new XMLHttpRequest();//creates new XMLHttpRequest
@@ -38,15 +38,15 @@ var requestId;//variable for the id of the theatre needed for the request url
         }
       }
    }
-  $("#cinema").change(function (){//when user picks a cinema from the pull-down this function fires
+  $("#searchButton").click(function (){//when user picks a cinema from the pull-down this function fires
     $( "#schedule" ).empty();  //removes elements from div #schedule previousely created
     $( "h1" ).remove();  //removes h1 element previousely created
-    
+	//$("#date").val()="";
       
     index = theatres.indexOf($("#cinema").val());//creates variable for the cinema's index from the id array, picks value from the pull-down and assings index of it (from the theatres array)to the variable 
     requestId = id[index];//gets id of the chosen theatre from the id array
     
-    var url ="https://www.finnkino.fi/xml/Schedule/?area="+ requestId //url of the request with id of the requred cinema included
+    var url ="https://www.finnkino.fi/xml/Schedule/?area="+requestId+"&dt="+strDate //url of the request with id of the requred cinema included
     
     xmlhttp2 = new XMLHttpRequest(); //creates new XMLHttpRequest
     xmlhttp2.open("GET", url, true);//request with the theatre ID in the string
@@ -55,10 +55,16 @@ var requestId;//variable for the id of the theatre needed for the request url
       
      xmlhttp2.onreadystatechange =function (){
        if (xmlhttp2.readyState == 4 && xmlhttp2.status == 200){//if ready state is 4 and status is 200 
+		   
+		   if (($("#date").val()) ==""){
            var d = new Date();//creates variable and assigns it to the current date
-           var strDate = d.getDate() + "." + (d.getMonth()+1) + "." + d.getFullYear();//from the current date gets date, month, year in that orded put them in the string for fruther use
+		   strDate = d.getDate() + "." + (d.getMonth()+1) + "." + d.getFullYear();//from the current date gets date, month, year in that orded put them in the string for fruther use
+		   }
+		   else {
+		   strDate = $("#date").val();
+		   }
            
-           $( "#search" ).after( "<h1>Ongoing movies in "+$("#cinema").val()+" "+strDate+"</h1>" ); //creates new element <h1> with text about choosen cimnema
+           $( "#select" ).after( "<h1>Ongoing movies in "+$("#cinema").val()+" "+strDate+"</h1>" ); //creates new element <h1> with text about choosen cimnema
            $( "h1" ).hide();  //hides h1 element
            $( "h1" ).fadeIn('slow');  //animates the opacity of the matched elements
            var schedule = xmlhttp2.responseXML;//creates variable with value of responseXML

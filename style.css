@@ -24,7 +24,7 @@ img{
     flex-wrap: wrap;
 
 }
-#select, #search {
+#select {
     font-size: 2rem;
     padding: 20px;
     border: 1px solid black;
