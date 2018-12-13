@@ -1,19 +1,16 @@
 #cinema{
     width: 15em;
 	margin-right: 0;
-	padding: auto;
 	height: 2em; 
 	margin: 5px;
 }
 #searchButton {
 	width: 10em;
 	margin: 5px;
-	padding: auto;
 	height: 2em; 
 }
  #date {
 	width: 8em;
-    padding: auto;
 	height: 1.5em;
 	margin: 5px;
 
@@ -69,8 +66,8 @@ header {
 	text-align: center;
 	text-shadow: 3px 3px 4px #000000;
 	padding: 40px;
-	background-color: white;
-	font-family: Arial Black, Gadget, sans-serif;
+	background-color: red;
+	font-family: "Arial Black", "Gadget", sans-serif;
 	color: white;
 	font-size: 4rem;
 	width: 100%;
@@ -78,7 +75,7 @@ header {
 }
 h1{
    font-size: 1.3rem;
-   font-family: Arial Black, Gadget, sans-serif;
+   font-family: "Arial Black", "Gadget", sans-serif;;
    border-radius: 10px;
    width: 100%;
    padding: 10px; 
@@ -106,7 +103,7 @@ body{
   	background-attachment: fixed;
 	background-position: center; 
 	background-size: cover;
-    font-family: Arial Black, Gadget, sans-serif;
+    font-family: "Arial Black", "Gadget", sans-serif;
     display:flex;
     flex-direction: column;
     align-items: center;

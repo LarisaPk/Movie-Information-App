@@ -38,22 +38,22 @@ var strDate;//variable for the date
         	}
       }
    }
-  $("#searchButton").click(function (){//when user picks a cinema from the pull-down this function fires
+  $("#searchButton").click(function (){//when user clicks search button this function fires
     $( "#schedule" ).empty();  //removes elements from div #schedule previousely created
     $( "h1" ).remove();  //removes h1 element previousely created
       
     index = theatres.indexOf($("#cinema").val());//creates variable for the cinema's index from the id array, picks value from the pull-down and assings index of it (from the theatres array)to the variable 
     requestId = id[index];//gets id of the chosen theatre from the id array
 	  
-    if (($("#date").val()) ==""){
+    if (($("#date").val()) ==""){//if no date was incerted in the text field - assigns today date to the strDate variable
            var d = new Date();//creates variable and assigns it to the current date
-		   strDate = d.getDate() + "." + (d.getMonth()+1) + "." + d.getFullYear();//from the current date gets date, month, year in that orded put them in the string for fruther use
+		   strDate = d.getDate() + "." + (d.getMonth()+1) + "." + d.getFullYear();//from the current date gets date, month, year in that order, puts them in the string for fruther use(this format needed for API url)
 		   }
 		   else {
-		   strDate = $("#date").val();
+		   strDate = $("#date").val();// assigns to the strDate value from the text field
 		   }
 	  
-    var url ="https://www.finnkino.fi/xml/Schedule/?area="+requestId+"&dt="+strDate //url of the request with id of the requred cinema included
+    var url ="https://www.finnkino.fi/xml/Schedule/?area="+requestId+"&dt="+strDate //url of the request with id of the requred cinema included and the date
     
     xmlhttp2 = new XMLHttpRequest(); //creates new XMLHttpRequest
     xmlhttp2.open("GET", url, true);//request with the theatre ID in the string
@@ -63,13 +63,14 @@ var strDate;//variable for the date
      xmlhttp2.onreadystatechange =function (){
        if (xmlhttp2.readyState == 4 && xmlhttp2.status == 200){//if ready state is 4 and status is 200 
            
-           $( "#select" ).after( "<h1>Shedule in "+$("#cinema").val()+" "+strDate+"</h1>" ); //creates new element <h1> with text about choosen cimnema
+           $( "#select" ).after( "<h1>Shedule in "+$("#cinema").val()+" "+strDate+"</h1>" ); //creates new element <h1> with text about choosen cimnema and date of the schedule shown
            $( "h1" ).hide();  //hides h1 element
            $( "h1" ).fadeIn('slow');  //animates the opacity of the matched elements
+		   
            var schedule = xmlhttp2.responseXML;//creates variable with value of responseXML
            console.log(schedule);//logs response in the console
            
-           var pictures = schedule.getElementsByTagName("EventSmallImagePortrait");//creates valiable and  array of all images for of ongoing movies in this theatre
+           var pictures = schedule.getElementsByTagName("EventSmallImagePortrait");//creates valiable and  array of all images of ongoing movies in this theatre
            var cinemasNames=schedule.getElementsByTagName("Theatre");//creates valiable and an array of all the theatres names
            
            var titles =schedule.getElementsByTagName("Title");//creates valiable and array of all movies' titles
@@ -77,7 +78,7 @@ var strDate;//variable for the date
            
            for (var i = 0; i< pictures.length; i++) {//goes through array of pictures
                var node = document.createElement("div");//creates new div element
-               node.className = 'block';//gives to new diw element class - block
+               node.className = 'block';//gives to new div element class - block
                document.getElementById("schedule").appendChild(node);//appends new div to schedile
                
                var title=titles[i].childNodes[0].nodeValue;//gets the movie title name from the array of names
@@ -98,7 +99,7 @@ var strDate;//variable for the date
                node.appendChild(newH3); //appends <h3> to new <div>
               
                var t =times[i].childNodes[0].nodeValue;//gets strat time from the array of times
-               var time = "Show starts at "+t.substring(11, 16);//extracts from "time" string only time (we do not need the date informtion)
+               var time = "Show starts at "+t.substring(11, 16);//extracts from "time" string only time (we do not need the date informtion) and assigns it to the variable time
                    
                var timetnode =document.createTextNode(time);//creates a textnode
                var new2H3 = document.createElement("h3");//creates new <h3> element
@@ -110,9 +111,9 @@ var strDate;//variable for the date
        }
   	}
 }); 
-$("#date").keydown(function (e){
-	var key = e.which;
-	if (key == 13) {
-		$("#searchButton").click();		   
+$("#date").keydown(function (e){//when user inserts something in the text field and presses key on the keyboard...
+	var key = e.which;// variable for key pressed
+	if (key == 13) {//if key pressed is Enter
+		$("#searchButton").click();// search button clicked
 	}
 });
