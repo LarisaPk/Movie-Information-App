@@ -64,11 +64,11 @@ h2 {
 
 header {
 	text-align: center;
-	padding: 20px;
+	padding: 40px;
 	background-color: white;
 	font-family: verdana;
 	font-size: 3rem;
-	width: 80%;
+	width: 100%;
 
 }
 h1{
@@ -95,7 +95,12 @@ img {
     
 }
 body{
-    background-color: black;
+    background-image: url("images/cinema_body.jpg");
+	background-color: black;
+	background-repeat: no-repeat;
+  	background-attachment: fixed;
+	background-position: center; 
+	background-size: cover;
     font-family: verdana;
     display:flex;
     flex-direction: column;
