@@ -1,6 +1,3 @@
-@-ms-viewport{
-  width: device-width;
-}
 #cinema{
     width: 15em;
 	margin-right: 0;
@@ -70,11 +67,12 @@ header {
 	background-position: center;
 	background-size: cover;
 	text-align: center;
+	text-shadow: 3px 3px 4px #000000;
 	padding: 40px;
 	background-color: white;
 	font-family: Arial Black, Gadget, sans-serif;
 	color: white;
-	font-size: 4em;
+	font-size: 4rem;
 	width: 100%;
 
 }
@@ -108,7 +106,7 @@ body{
   	background-attachment: fixed;
 	background-position: center; 
 	background-size: cover;
-    font-family: verdana;
+    font-family: Arial Black, Gadget, sans-serif;
     display:flex;
     flex-direction: column;
     align-items: center;

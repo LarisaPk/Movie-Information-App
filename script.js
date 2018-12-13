@@ -1,13 +1,13 @@
-window.onload = loadXML();//when window loads, loadXML function fires
-var xmlhttp;
-var xmlhttp2;
+window.onload = loadXML();//when window loads- loadXML function fires
+var xmlhttp;// variable to store respond from XMLHttpRequest
+var xmlhttp2;// variable to store respond from another XMLHttpRequest
 var id = [];// creates array for idis
 var theatres =[]; //creates array of theatres
 var index;//creates variable for the id index
 var requestId;//variable for the id of the theatre needed for the request url 
-var strDate;
+var strDate;//variable for the date
 
-    function loadXML() {//function that fires when window loaded
+    function loadXML() {//function that fires when window loaded, it sends XML requasts, stores response in variable, builds array of the teatres' idis and adds names of the theatres to the dropdown 
     xmlhttp = new XMLHttpRequest();//creates new XMLHttpRequest
   
     xmlhttp.open("GET", "https://www.finnkino.fi/xml/TheatreAreas/", true);// request with Finnkino API Theatre areas url 
@@ -18,24 +18,24 @@ var strDate;
     xmlhttp.onreadystatechange =function (){
        if (xmlhttp.readyState == 4 && xmlhttp.status == 200){//if ready state is 4 and status is 200 
          
-           var FinKin = xmlhttp.responseXML;//stores response in the varible created
-           console.log(FinKin);//logs the response into the console
+           var FinKin = xmlhttp.responseXML;//stores XML response in the varible created
+           console.log(FinKin);//logs the XML response into the console
            
-           var cinemas= FinKin.getElementsByTagName("Name");//ctreates variable and stores there all cinemas names found by tag
-           var idis=FinKin.getElementsByTagName("ID");//creates variable and stores there all theatres' idis found by tag
+           var cinemas= FinKin.getElementsByTagName("Name");//ctreates variable and stores there all cinemas names found by tag Name
+           var idis=FinKin.getElementsByTagName("ID");//creates variable and stores there all theatres' idis found by tag ID
 
-        for (var i = 0; i< cinemas.length; i++) {//goes through array with cinemas' names
+		   for (var i = 0; i< cinemas.length; i++) {//goes through array with cinemas' names
              
-           id[i]=idis[i].childNodes[0].nodeValue;//gets value from the idis array[i] and sets it with the index of [i] to the id array
+           	   id[i]=idis[i].childNodes[0].nodeValue;//gets value from the idis array[i] and sets it with the index of [i] to the id array
             
-           var cinema=cinemas[i].childNodes[0].nodeValue;//text (name of the cinema) for the option in the pull-down
-           theatres[i]=cinema;//sets value to array theatres ith index of [i]  
-               
-           var textnode =document.createTextNode(cinema);//creates a textnode    
-           var node = document.createElement("option");//creates an option element
-           node.appendChild(textnode); //Appends the text to <option>   
-           document.getElementById("cinema").appendChild(node);//appends <option> to <select>
-        }
+			   var cinema=cinemas[i].childNodes[0].nodeValue;//text (name of the cinema) for the option in the pull-down
+			   theatres[i]=cinema;//sets value to the array theatres with index of [i]  
+         	      
+			   var textnode =document.createTextNode(cinema);//creates a textnode    
+			   var node = document.createElement("option");//creates an option element
+			   node.appendChild(textnode); //Appends the text to <option>   
+			   document.getElementById("cinema").appendChild(node);//appends <option> to <select>
+        	}
       }
    }
   $("#searchButton").click(function (){//when user picks a cinema from the pull-down this function fires
@@ -108,4 +108,11 @@ var strDate;
           $( ".block" ).hide();  //hides all alements with class block
           $( ".block" ).fadeIn('slow');  // animates the opacity of the matched elements
        }
-  }});   
+  	}
+}); 
+$("#date").keydown(function (e){
+	var key = e.which;
+	if (key == 13) {
+		$("#searchButton").click();		   
+	}
+});
