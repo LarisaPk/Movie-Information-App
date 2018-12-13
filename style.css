@@ -1,18 +1,21 @@
+@-ms-viewport{
+  width: device-width;
+}
 #cinema{
-    width: 33em;
+    width: 15em;
 	margin-right: 0;
 	padding: auto;
 	height: 2em; 
 	margin: 5px;
 }
 #searchButton {
-	width: 15em;
+	width: 10em;
 	margin: 5px;
 	padding: auto;
 	height: 2em; 
 }
  #date {
-	width: 15em;
+	width: 8em;
     padding: auto;
 	height: 1.5em;
 	margin: 5px;
@@ -24,7 +27,7 @@
     border: 1px solid black;
     align-content: center;
     padding: 10px;
-    width: 300px;
+    width: 320px;
     margin-right: 10px;
     margin-top: 10px;
     border-radius: 50px 20px;
@@ -43,16 +46,16 @@ img{
 
 }
 #select {
-    font-size: 1.5rem;
+    font-size: 1.1rem;
     padding: 10px;
     border: 1px solid black;
     display: flex;
     flex-wrap: wrap;
     margin-bottom: 5px;
 	align-items: center;
-    justify-content: space-around;
-    border-radius: 20px;
-    background-color: yellow;
+    justify-content:space-around;
+    border-radius: 10px;
+    background-color: #eeee2b;
 	width: 100%;
 }
 
@@ -63,23 +66,27 @@ h2 {
 }
 
 header {
+	background-image: url("images/red.jpg");
+	background-position: center;
+	background-size: cover;
 	text-align: center;
 	padding: 40px;
 	background-color: white;
-	font-family: verdana;
-	font-size: 3rem;
+	font-family: Arial Black, Gadget, sans-serif;
+	color: white;
+	font-size: 4em;
 	width: 100%;
 
 }
 h1{
-   border: 1px solid black; 
-   border-radius: 20px;
+   font-size: 1.3rem;
+   font-family: Arial Black, Gadget, sans-serif;
+   border-radius: 10px;
    width: 100%;
    padding: 10px; 
-
-	margin: 0;
+   margin: 0;
    text-align: center;
-   background-color: yellow;
+   background-color: #eeee2b;
 }
 img {
     padding: 15px;
